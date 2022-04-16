@@ -1,8 +1,8 @@
 import Header from './components/Header';
 import Slider from './components/Slider';
 import Footer from './components/Footer';
-import './App.css';
 import Text from './components/Text';
+import './App.css';
 
 function App() {
   return (
