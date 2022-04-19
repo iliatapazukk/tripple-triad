@@ -13,10 +13,13 @@ const Text = (
     disabled
   }) => {
   const elementToRender = (condition) => {
-    switch (true) {
-      case Boolean(condition === 'p'): return 'p'
-      case Boolean(condition === 'span'): return 'span'
-      default: return 'div'
+    switch (condition) {
+      case 'p':
+        return 'p'
+      case 'span':
+        return 'span'
+      default:
+        return 'div'
     }
   }
   return React.createElement(
@@ -30,6 +33,10 @@ const Text = (
       'disabled': disabled,
     }, children);
 };
+
+Text.defaultProps = {
+  element: 'div',
+}
 
 Text.propTypes = {
   element: PropTypes.oneOf(['div', 'p', 'span']).isRequired,

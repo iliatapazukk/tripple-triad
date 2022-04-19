@@ -1,12 +1,19 @@
 import cx from 'classnames'
-import st from './style.module.css';
+import PropTypes from 'prop-types'
+import st from './Container.module.css';
+import Heading from '../Heading';
 
-const Container = (props) => {
+const Container = ({children, className}) => {
   return (
-    <div className={cx(st.root, props.className)}>
-      {props.children}
+    <div className={cx(st.root, className)}>
+      {children}
     </div>
   );
 };
+
+Heading.propTypes = {
+  className: PropTypes.string,
+  children: PropTypes.node,
+}
 
 export default Container;
