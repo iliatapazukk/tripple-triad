@@ -1,36 +1,49 @@
+import React from 'react';
+import CHARACTER from './CHARACTER.json'
 import Header from './components/Header';
 import Slider from './components/Slider';
 import Footer from './components/Footer';
-import Text from './components/Text';
-import './App.css';
+import Heading from './components/Heading';
+import CharacterCard from './components/CaracterCard';
+import st from './App.module.scss';
 
 function App() {
+  const [character, setCharacter] = React.useState(CHARACTER)
+  const handleLikeClick = (id) => {
+    setCharacter(character.map(
+      clickedHero => clickedHero.id === id ? { ...clickedHero, isLike: !clickedHero.isLike } : clickedHero
+    ))
+  }
   return (
     <>
       <Header />
       <Slider />
-      <div style={{
-        backgroundColor: '#f7f7f7',
-        padding: '1rem',
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        justifyContent: 'center',
-      }}>
-        <div>
-          <Text element="span">Span</Text>
+      <section className={st.cardSection}>
+        <div className={st.cardTitle}>
+          <Heading level={1} backLine>Marvel cards</Heading>
+          <Heading level={2}>Collect your best five</Heading>
         </div>
-        <div>
-          <Text element="p">Paragraph</Text>
+        <div className={st.cardWrap}>
+          {character.map((character) => {
+            return (
+              <div key={character.id}>
+                <CharacterCard
+                  id={character.id}
+                  src={character.thumbnail.path}
+                  name={character.name}
+                  isLike={character.isLike}
+                  humanName={character.humanName}
+                  description={character.description}
+                  onLikeClick={handleLikeClick}
+                />
+              </div>
+            )
+          })}
         </div>
-        <Text element="div">Block</Text>
-        <Text element="div" italic>Block italic</Text>
-        <Text element="div" disabled>Block disabled</Text>
-        <Text element="div" strong>Block bold</Text>
-      </div>
+      </section>
       <Footer />
     </>
   );
 }
 
-export default App;
+export default App

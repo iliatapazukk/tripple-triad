@@ -1,6 +1,6 @@
 import Navigation from '../Navigation'
 import logo from '../../assets/images/logo.png'
-import st from './Header.module.css'
+import st from './Header.module.scss'
 
 const MENU = ['Menu 1', 'Menu 2', 'Menu 3', 'Menu 4'];
 const Header = () => {

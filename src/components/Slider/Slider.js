@@ -8,7 +8,7 @@ const Slider = () => {
       <section className={st.section}>
         <div className={st.slider}>
           <Container className={st.sliderContent}>
-            <Heading level={1} className={st.header}>
+            <Heading level={1} className={st.header} backLine>
               <div>asd</div>
             </Heading>
             <Heading level={2} className={st.subheader}>
