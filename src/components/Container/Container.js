@@ -1,6 +1,6 @@
 import cx from 'classnames'
 import PropTypes from 'prop-types'
-import st from './Container.module.css';
+import st from './Container.module.scss';
 import Heading from '../Heading';
 
 const Container = ({children, className}) => {

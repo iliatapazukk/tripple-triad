@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types'
 import cx from 'classnames'
-import st from './Text.module.css'
+import st from './Text.module.scss'
 
 const Text = (
   {
