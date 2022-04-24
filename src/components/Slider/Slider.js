@@ -1,6 +1,7 @@
 import Container from '../Container';
 import Heading from '../Heading';
 import st from './Slider.module.css';
+import Button from '../Button';
 
 const Slider = () => {
   return (
@@ -15,7 +16,7 @@ const Slider = () => {
               <div>Sub Header</div>
             </Heading>
             <div className={st.call}>
-              <button className={st.button}>Wow</button>
+              <Button title="Wow"/>
             </div>
           </Container>
         </div>

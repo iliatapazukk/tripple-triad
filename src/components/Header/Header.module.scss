@@ -31,6 +31,7 @@
 .logo {
   height: 70px;
   width: 125px;
+  transition: all 0.2s linear;
 }
 
 .logo img {
@@ -67,8 +68,4 @@
 .header.small .logo {
   width: 89px;
   height: 50px;
-}
-
-.header.small .nav  {
-  font-size: 16px;
 }

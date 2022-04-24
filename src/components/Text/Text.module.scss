@@ -1,14 +1,17 @@
-.root {}
+.root {
+  margin-bottom: 1em;
 
-.strong {
-  font-weight: bold;
+  &.strong {
+    font-weight: bold;
+  }
+
+  &.italic {
+    font-style: italic;
+  }
+
+  &.disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
+  }
 }
 
-.italic {
-  font-style: italic;
-}
-
-.disabled {
-  cursor: not-allowed;
-  opacity: 0.6;
-}
