@@ -8,11 +8,16 @@ import Button from '../Button';
 const MENU = ['Menu 1', 'Menu 2', 'Menu 3', 'Menu 4'];
 const Header = () => {
   const [scroll, setScroll] = React.useState(false)
+
+  const onScroll = () => {
+    window.scrollY > 60 ? setScroll(true) : setScroll(false)
+  }
   React.useEffect(() => {
-    const onScroll = () => {
-      window.scrollY > 60 ? setScroll(true) : setScroll(false)
-    }
-    window.addEventListener('scroll', onScroll )
+    const watchScroll = () => window.addEventListener('scroll', onScroll )
+    watchScroll()
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+    };
 
   }, []);
 
