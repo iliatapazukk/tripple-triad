@@ -6,11 +6,13 @@ import Text from '../../components/Text';
 import st from './Biography.module.scss'
 
 const ParsedItem = ({type, text, src}) => {
-  switch (type) {
-    case 'h1': return <Heading level={1}>{text}</Heading>
-    case 'h2': return <Heading level={2}>{text}</Heading>
-    case 'paragraph': return <Text element="p">{text}</Text>
-    case 'img': return <img src={src}/>
+  if (type.length  === 2 && type[0] === 'h') {
+    return <Heading level={type.slice(1)}>{text}</Heading>
+  } else {
+    switch (type) {
+      case 'paragraph': return <Text element="p">{text}</Text>
+      case 'img': return <img src={src}/>
+    }
   }
 }
 
