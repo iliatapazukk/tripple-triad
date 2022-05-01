@@ -1,82 +1,24 @@
 import React from 'react';
-import CHARACTERS from './CHARACTER.json'
-import Header from './components/Header';
-import Slider from './components/Slider';
-import Footer from './components/Footer';
-import Heading from './components/Heading';
-import CharacterCard from './components/CaracterCard';
-import st from './App.module.scss';
+import Main from './pages/Main';
+import {Routes, Route} from 'react-router-dom';
 import Biography from './pages/Biography';
-import Button from './components/Button';
-const scrollTop = () => {
-  window.scrollTo({
-    top: 0,
-    left: 0,
-    behavior: "smooth"
-  })
-}
+import Layout from './components/Layout';
+import Characters from './pages/Characters';
+import About from './pages/About/About';
+import Contacts from './pages/Contacts';
+
 function App() {
-  const [characters, setCharacters] = React.useState(CHARACTERS)
-  const [characterId, setCharacterBioId] = React.useState(null)
-  const handleReadBioClick = (id) => {
-    setCharacterBioId(id)
-    scrollTop()
-  }
-  const resetBio = () => {
-    setCharacterBioId(null)
-    scrollTop()
-  }
-  const handleLikeClick = (id) => {
-    setCharacters((prevState) => prevState.map(
-        clickedHero => clickedHero.id === id ? {...clickedHero, isLike: !clickedHero.isLike} : clickedHero
-      )
-    )
-  }
 
   return (
-    <>
-      <Header />
-      {characterId ? (
-        <section className={st.cardSection}>
-          <Biography id={characterId}/>
-          <Button
-            isDark
-            onClick={resetBio}
-            >
-            Go Back
-          </Button>
-        </section>
-      ): (
-        <>
-          <Slider />
-          <section className={st.cardSection}>
-            <div className={st.cardTitle}>
-              <Heading level={1} backLine>Marvel cards</Heading>
-              <Heading level={2}>Collect your best five</Heading>
-            </div>
-            <div className={st.cardWrap}>
-              {characters.map((character) => {
-                return (
-                  <div key={character.id}>
-                    <CharacterCard
-                      id={character.id}
-                      src={character.thumbnail.path}
-                      name={character.name}
-                      isLike={character.isLike}
-                      humanName={character.humanName}
-                      description={character.description}
-                      onLikeClick={handleLikeClick}
-                      onReadBioClick={handleReadBioClick}
-                    />
-                  </div>
-                )
-              })}
-            </div>
-          </section>
-        </>
-      )}
-      <Footer />
-    </>
+    <Routes>
+      <Route path="/" element={<Layout/>}>
+        <Route index element={<Main/>}/>
+        <Route path="characters" element={<Characters /> }/>
+        <Route path="bio/:id" element={<Biography /> }/>
+        <Route path="about" element={<About /> }/>
+        <Route path="contacts" element={<Contacts /> }/>
+      </Route>
+    </Routes>
   );
 }
 
