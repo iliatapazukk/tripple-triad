@@ -4,6 +4,7 @@ import {ReactComponent as Heart}  from './assets/heart.svg'
 import Heading from '../Heading';
 import Text from '../Text';
 import cx from 'classnames'
+import Button from '../Button';
 import st from './CharacterCard.module.scss'
 
 const CharacterCard = (
@@ -14,9 +15,11 @@ const CharacterCard = (
     humanName,
     description,
     isLike,
-    onLikeClick
+    onLikeClick,
+    onReadBioClick,
   }) => {
   const handleLike = () => onLikeClick(id)
+  const handleReadBioClick = () =>  onReadBioClick(id)
   return (
     <div className={st.root}>
       <img
@@ -41,7 +44,12 @@ const CharacterCard = (
             <Heart />
           </div>
           <div className={st.readBio}>
-            <a href="#">Read bio</a>
+            <Button
+              isDark
+              onClick={handleReadBioClick}
+            >
+              Read bio
+            </Button>
           </div>
         </div>
       </div>
