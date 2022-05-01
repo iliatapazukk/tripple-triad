@@ -23,7 +23,6 @@ const Header = () => {
 
   return (
     <header className={st.root}>
-      <Button/>
       <div className={cx(st.header, {[st.small] : scroll})}>
         <div className={st.headerWrap}>
           <div className={st.logo}>

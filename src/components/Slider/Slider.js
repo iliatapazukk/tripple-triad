@@ -16,7 +16,7 @@ const Slider = () => {
               <div>Sub Header</div>
             </Heading>
             <div className={st.call}>
-              <Button title="Wow"/>
+              <Button>Wow</Button>
             </div>
           </Container>
         </div>

@@ -45,10 +45,11 @@ const CharacterCard = (
           </div>
           <div className={st.readBio}>
             <Button
-              isLight
-              title="Read bio"
+              isDark
               onClick={handleReadBioClick}
-            />
+            >
+              Read bio
+            </Button>
           </div>
         </div>
       </div>

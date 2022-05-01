@@ -2,21 +2,21 @@ import PropTypes from 'prop-types';
 import cx from 'classnames'
 import st from './Button.module.scss'
 
-const Button = ({title, isLight, onClick}) => {
+const Button = ({children, isDark, onClick}) => {
   return (
-    <div onClick={onClick} className={cx(st.root, {[st.light]: isLight})}>
-      {title}
+    <div onClick={onClick} className={cx(st.root, {[st.dark]: isDark})}>
+      {children}
     </div>
   );
 };
 
 Button.defaultProps = {
-  isLight: false,
+  isDark: false,
 }
 
 Button.propTypes = {
-  isLight: PropTypes.bool,
-  title: PropTypes.string,
+  isDark: PropTypes.bool,
+  children: PropTypes.node,
 }
 
 export default Button;

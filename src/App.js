@@ -8,17 +8,16 @@ import CharacterCard from './components/CaracterCard';
 import st from './App.module.scss';
 import Biography from './pages/Biography';
 import Button from './components/Button';
-
+const scrollTop = () => {
+  window.scrollTo({
+    top: 0,
+    left: 0,
+    behavior: "smooth"
+  })
+}
 function App() {
   const [characters, setCharacters] = React.useState(CHARACTERS)
   const [characterId, setCharacterBioId] = React.useState(null)
-  const scrollTop = () => {
-    window.scrollTo({
-      top: 0,
-      left: 0,
-      behavior: "smooth"
-    })
-  }
   const handleReadBioClick = (id) => {
     setCharacterBioId(id)
     scrollTop()
@@ -41,10 +40,11 @@ function App() {
         <section className={st.cardSection}>
           <Biography id={characterId}/>
           <Button
-            title="Go Back"
-            isLight
+            isDark
             onClick={resetBio}
-          />
+            >
+            Go Back
+          </Button>
         </section>
       ): (
         <>
