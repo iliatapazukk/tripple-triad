@@ -6,6 +6,8 @@ import Text from '../Text';
 import cx from 'classnames'
 import Button from '../Button';
 import st from './CharacterCard.module.scss'
+import {Link, useNavigate} from 'react-router-dom';
+import {scrollTop} from '../../helpers';
 
 const CharacterCard = (
   {
@@ -16,10 +18,14 @@ const CharacterCard = (
     description,
     isLike,
     onLikeClick,
-    onReadBioClick,
   }) => {
-  const handleLike = () => onLikeClick(id)
-  const handleReadBioClick = () =>  onReadBioClick(id)
+  const navigate = useNavigate()
+  const handleLike = () => onLikeClick && onLikeClick(id)
+  const handleReadBioClick = () => {
+    navigate(`/bio/${id}`)
+    scrollTop()
+  }
+
   return (
     <div className={st.root}>
       <img
@@ -44,12 +50,7 @@ const CharacterCard = (
             <Heart />
           </div>
           <div className={st.readBio}>
-            <Button
-              isDark
-              onClick={handleReadBioClick}
-            >
-              Read bio
-            </Button>
+            <Button isDark onClick={handleReadBioClick}>Read bio</Button>
           </div>
         </div>
       </div>
