@@ -4,13 +4,22 @@ import {BIO} from '../../constants/bio';
 import Heading from '../../components/Heading';
 import Text from '../../components/Text';
 import Button from '../../components/Button';
-import {useNavigate, useParams} from 'react-router-dom';
-import {scrollTop} from '../../helpers';
+import {Navigate, useNavigate, useParams, useLocation} from 'react-router-dom';
+import {ReactComponent as NavIocn} from '../../assets/images/link_icon.svg';
 import st from './Biography.module.scss'
 
 const ParsedItem = ({type, text, src}) => {
+  const navigate = useNavigate()
+  const anchor = text && text.replace(/\s/g, '')
+  const handleClick = () => {
+    navigate(`#${anchor}`)
+  }
   if (type.length === 2 && type[0] === 'h') {
-    return <Heading level={type.slice(1)}>{text}</Heading>
+    return (
+      <Heading id={anchor} withIconOnHover level={type.slice(1)}>
+      {text} <NavIocn onClick={handleClick} />
+      </Heading>
+    )
   } else {
     switch (type) {
       case 'paragraph':
@@ -25,7 +34,7 @@ ParsedItem.propTypes = {
   type: PropTypes.string.isRequired,
   text: PropTypes.string,
   src: PropTypes.string,
-  onBackClick: PropTypes.func,
+  id: PropTypes.string,
 }
 
 const Biography = () => {
@@ -33,8 +42,8 @@ const Biography = () => {
   const navigate = useNavigate()
   const handleBackClick = () => {
     navigate(-1)
-    scrollTop()
   }
+  if (!BIO[id]) return <Navigate to={'404'} replace/>
   return (
     <div className={st.root}>
       {BIO[id].map((item, index) => (

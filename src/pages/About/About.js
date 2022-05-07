@@ -1,11 +1,9 @@
 import React from 'react';
 import Text from '../../components/Text';
-import st from './About.module.scss'
-
 
 const About = () => {
   return (
-    <div className={st.root}>
+    <>
       <Text element="p">
         Triple Triad is played on a blank 3-by-3 square game board. Squall plays against one opponent at a time in
         turn-based gameplay. Both players have five cards in their hand at the start of the game. The absolute simplest
@@ -55,7 +53,7 @@ const About = () => {
         sudden death scenario where the grid is cleared, and the game is played until one player wins. Again, depending
         on the rules in effect, the winner will claim a prize of one of the loser's card.
       </Text>
-    </div>
+    </>
   );
 };
 
