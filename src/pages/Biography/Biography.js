@@ -4,7 +4,7 @@ import {BIO} from '../../constants/bio';
 import Heading from '../../components/Heading';
 import Text from '../../components/Text';
 import Button from '../../components/Button';
-import {Navigate, useNavigate, useParams, useLocation} from 'react-router-dom';
+import {Navigate, useNavigate, useParams} from 'react-router-dom';
 import {ReactComponent as NavIocn} from '../../assets/images/link_icon.svg';
 import st from './Biography.module.scss'
 

@@ -3,7 +3,6 @@ import Footer from '../Footer';
 import Header from '../Header';
 import { Outlet, useMatch } from 'react-router-dom';
 import Container from '../Container';
-import cx from 'classnames'
 import st from './Layout.module.scss'
 
 const Layout = () => {
