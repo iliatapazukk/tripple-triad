@@ -1,15 +1,28 @@
 import React from 'react';
 import Footer from '../Footer';
 import Header from '../Header';
-import { Outlet } from 'react-router-dom';
+import { Outlet, useMatch } from 'react-router-dom';
+import Container from '../Container';
+import st from './Layout.module.scss'
 
 const Layout = () => {
+  const matchMainPage = useMatch({ path: '/' })
+  const matchCharactersPage = useMatch({ path: '/characters' })
   return (
-    <div>
+    <>
       <Header />
-      <Outlet />
+      { matchMainPage !== null || matchCharactersPage !== null ?
+        (
+          <Outlet/>
+        ) : (
+          <div className={st.container}>
+            <Container>
+              <Outlet />
+            </Container>
+          </div>
+        )}
       <Footer />
-    </div>
+    </>
   );
 };
 

@@ -6,8 +6,7 @@ import Text from '../Text';
 import cx from 'classnames'
 import Button from '../Button';
 import st from './CharacterCard.module.scss'
-import {Link, useNavigate} from 'react-router-dom';
-import {scrollTop} from '../../helpers';
+import {useNavigate} from 'react-router-dom';
 
 const CharacterCard = (
   {
@@ -21,10 +20,7 @@ const CharacterCard = (
   }) => {
   const navigate = useNavigate()
   const handleLike = () => onLikeClick && onLikeClick(id)
-  const handleReadBioClick = () => {
-    navigate(`/bio/${id}`)
-    scrollTop()
-  }
+  const handleReadBioClick = () => navigate(`/characters/${id}`)
 
   return (
     <div className={st.root}>

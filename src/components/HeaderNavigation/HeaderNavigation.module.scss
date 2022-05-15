@@ -16,16 +16,13 @@
   }
 
   li a {
-    transition: color 0.2s linear;
-  }
-
-  li:hover a {
-    color: red;
-  }
-
-  li a {
     padding: 21px;
     color: initial;
     text-decoration: initial;
+    transition: color 0.2s linear;
+    &.active,
+    &:hover {
+      color: red;
+    }
   }
 }
