@@ -15,7 +15,7 @@ const Heading = ({
   return React.createElement(
     element,
     {
-      id: id,
+      id,
       className: cx(
         st.root,
         st[`h${level}`],

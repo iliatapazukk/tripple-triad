@@ -8,9 +8,10 @@ import st from './Layout.module.scss'
 const Layout = () => {
   const matchMainPage = useMatch({ path: '/' })
   const matchCharactersPage = useMatch({ path: '/characters' })
+  const matchLoginPage = useMatch({ path: '/login' })
   return (
     <>
-      <Header />
+      {!matchLoginPage && <Header />}
       { matchMainPage !== null || matchCharactersPage !== null ?
         (
           <Outlet/>

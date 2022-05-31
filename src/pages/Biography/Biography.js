@@ -5,19 +5,17 @@ import Heading from '../../components/Heading';
 import Text from '../../components/Text';
 import Button from '../../components/Button';
 import {Navigate, useNavigate, useParams} from 'react-router-dom';
-import {ReactComponent as NavIocn} from '../../assets/images/link_icon.svg';
+import {ReactComponent as AnchorIcon} from '../../assets/images/link_icon.svg';
 import st from './Biography.module.scss'
 
 const ParsedItem = ({type, text, src}) => {
   const navigate = useNavigate()
-  const anchor = text && text.replace(/\s/g, '')
-  const handleClick = () => {
-    navigate(`#${anchor}`)
-  }
+  const anchor = text && text.split(' ').join('_')
+  const handleClick = () => navigate(`#${anchor}`)
   if (type.length === 2 && type[0] === 'h') {
     return (
       <Heading id={anchor} withIconOnHover level={type.slice(1)}>
-      {text} <NavIocn onClick={handleClick} />
+      {text} <AnchorIcon onClick={handleClick} />
       </Heading>
     )
   } else {
@@ -26,6 +24,7 @@ const ParsedItem = ({type, text, src}) => {
         return <Text element="p">{text}</Text>
       case 'img':
         return <img src={src} alt={''}/>
+      default: return <Text>{text}</Text>
     }
   }
 }
@@ -57,7 +56,7 @@ const Biography = () => {
       )}
       <Button isDark onClick={handleBackClick}>Go Back</Button>
     </div>
-  );
+  )
 };
 
 export default Biography;
