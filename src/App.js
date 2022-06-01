@@ -7,8 +7,8 @@ import Characters from './pages/Characters';
 import About from './pages/About/About';
 import Contacts from './pages/Contacts';
 import NotFound from './pages/NotFound';
-import {scrollTop} from './helpers';
 import Login from './pages/Login';
+import {scrollTop} from './helpers';
 
 function App() {
   const location = useLocation();

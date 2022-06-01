@@ -1,17 +1,48 @@
 import React from 'react';
-import {ReactComponent as Edit} from '../../assets/images/edit.svg';
+import st from './Login.module.scss';
 import logo from '../../assets/images/logo.png';
-import cx from 'classnames'
-import st from './Login.module.scss'
-import PropTypes from 'prop-types';
-import Heading from '../../components/Heading';
+import cx from 'classnames';
 import Input from '../../components/Input';
-import Button from '../../components/Button';
+import Text from '../../components/Text';
+import {ReactComponent as Edit} from '../../assets/images/edit.svg';
 
 const Login = () => {
   const [toggle, setToggle] = React.useState(false)
-  const handleToggle = () => setToggle(true)
-  const handleClose = () => setToggle(false)
+  const handleToggle = () => {
+    setToggle(true)
+    setFormData(defaultState)
+  }
+  const handleClose = () => {
+    setToggle(false)
+    setFormData(defaultState)
+  }
+
+  const defaultState = {
+    email: '',
+    password: '',
+    repeat: '',
+  }
+  const [formData, setFormData] = React.useState(defaultState)
+
+  const handleInputChange = (event) => {
+    setFormData(prevState => ({
+      ...prevState,
+      [event.target.name]: event.target.value
+    }))
+  }
+  const [isEqual, setIsEqual] = React.useState(undefined)
+  const passwordRef = React.useRef(null)
+  const repeatRef = React.useRef(null)
+
+  const handleSubmit = (event) => {
+    event.preventDefault()
+    if (passwordRef.current.value !== repeatRef.current.value) {
+      setIsEqual(true)
+      return
+    }
+    console.log('!!! formData:', formData)
+    setFormData(defaultState)
+  }
 
   return (
     <div className={st.root}>
@@ -22,13 +53,18 @@ const Login = () => {
         <div className={st.card}/>
         <div className={st.card}>
           <h1 className={st.title}>Login</h1>
-          <form autoComplete="off">
+          <form
+            autoComplete="off"
+            onSubmit={handleSubmit}
+          >
             <div className={st.inputContainer}>
               <Input
                 id="#email"
                 type="email"
-                required={true}
+                name="email"
                 label="Email"
+                value={formData.email}
+                onChange={handleInputChange}
               />
               <div className={st.bar}/>
             </div>
@@ -36,8 +72,10 @@ const Login = () => {
               <Input
                 id="#password"
                 type="password"
-                required={true}
+                name="password"
                 label="Password"
+                value={formData.password}
+                onChange={handleInputChange}
               />
               <div className={st.bar}/>
             </div>
@@ -55,13 +93,16 @@ const Login = () => {
             Register
             <div className={st.close} onClick={handleClose}/>
           </h1>
-          <form>
+          <form onSubmit={handleSubmit}>
             <div className={st.inputContainer}>
               <Input
                 id="#signup-email"
                 type="email"
+                name="email"
+                value={formData.email}
                 required={true}
                 label="Email"
+                onChange={handleInputChange}
               />
               <div className={st.bar}/>
             </div>
@@ -69,8 +110,12 @@ const Login = () => {
               <Input
                 id="#signup-password"
                 type="password"
+                name="password"
                 required={true}
+                reference={passwordRef}
+                value={formData.password}
                 label="Password"
+                onChange={handleInputChange}
               />
               <div className={st.bar}/>
             </div>
@@ -78,15 +123,17 @@ const Login = () => {
               <Input
                 id="#signup-repeat-password"
                 type="password"
+                name="repeat"
                 required={true}
+                reference={repeatRef}
+                value={formData.repeat}
                 label="Repeat Password"
+                onChange={handleInputChange}
               />
               <div className={st.bar}/>
+              {isEqual && <Text>Repeat password correct</Text>}
             </div>
             <div className={st.buttonContainer}>
-              <Button>
-
-              </Button>
               <button><span>Register</span></button>
             </div>
           </form>

@@ -6,8 +6,12 @@ const Input = ({
   id,
   type,
   label,
+  name,
+  value,
   required,
   placeholder,
+  onChange,
+  reference,
 }) => {
   return (
     <>
@@ -16,6 +20,10 @@ const Input = ({
         required={required}
         placeholder={placeholder}
         id={id}
+        ref={reference}
+        name={name}
+        value={value}
+        onChange={onChange}
       />
       <label htmlFor={id}>{label}</label>
     </>
@@ -25,9 +33,13 @@ const Input = ({
 Login.propTypes = {
   id: PropTypes.string,
   type: PropTypes.string,
+  name: PropTypes.string,
   label: PropTypes.string,
+  value: PropTypes.string,
   required: PropTypes.bool,
   placeholder: PropTypes.string,
+  onChange: PropTypes.func,
+  reference: PropTypes.func
 }
 
 export default Input;
