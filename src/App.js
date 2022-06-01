@@ -7,13 +7,14 @@ import Characters from './pages/Characters';
 import About from './pages/About/About';
 import Contacts from './pages/Contacts';
 import NotFound from './pages/NotFound';
+import Login from './pages/Login';
 import {scrollTop} from './helpers';
 
 function App() {
   const location = useLocation();
   React.useEffect(() => {
     if (location.hash) {
-      const elId = location.hash.substring(1)
+      const elId = location.hash.slice(1)
       const element = document.getElementById(elId);
       element && element.scrollIntoView({
         block: 'center',
@@ -27,6 +28,7 @@ function App() {
     <Routes>
       <Route path="/" element={<Layout/>}>
         <Route index element={<Main/>}/>
+        <Route path="login" element={<Login/>}/>
         <Route path="characters" element={<Characters /> }/>
         <Route path="characters/:id" element={<Biography /> }/>
         <Route path="about" element={<About /> }/>
