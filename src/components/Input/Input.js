@@ -39,7 +39,7 @@ Input.propTypes = {
   required: PropTypes.bool,
   placeholder: PropTypes.string,
   onChange: PropTypes.func,
-  reference: PropTypes.func
+  reference: PropTypes.object
 }
 
 export default Input;

@@ -8,9 +8,11 @@ import {ReactComponent as Edit} from '../../assets/images/edit.svg';
 
 const Login = () => {
   const [toggle, setToggle] = React.useState(false)
+  const [isEqual, setIsEqual] = React.useState(undefined)
   const handleToggle = () => {
     setToggle(true)
     setFormData(defaultState)
+    setIsEqual(false)
   }
   const handleClose = () => {
     setToggle(false)
@@ -30,13 +32,13 @@ const Login = () => {
       [event.target.name]: event.target.value
     }))
   }
-  const [isEqual, setIsEqual] = React.useState(undefined)
+
   const passwordRef = React.useRef(null)
   const repeatRef = React.useRef(null)
 
   const handleSubmit = (event) => {
     event.preventDefault()
-    if (passwordRef.current.value !== repeatRef.current.value) {
+    if (repeatRef && (passwordRef.current.value !== repeatRef.current.value)) {
       setIsEqual(true)
       return
     }
@@ -131,8 +133,8 @@ const Login = () => {
                 onChange={handleInputChange}
               />
               <div className={st.bar}/>
-              {isEqual && <Text>Repeat password correct</Text>}
             </div>
+            {isEqual && <Text>Repeat password correct</Text>}
             <div className={st.buttonContainer}>
               <button><span>Register</span></button>
             </div>
