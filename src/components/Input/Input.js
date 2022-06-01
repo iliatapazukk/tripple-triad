@@ -30,7 +30,7 @@ const Input = ({
   );
 };
 
-Login.propTypes = {
+Input.propTypes = {
   id: PropTypes.string,
   type: PropTypes.string,
   name: PropTypes.string,
